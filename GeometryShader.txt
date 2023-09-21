@@ -1,0 +1,55 @@
+#version 430 core
+
+layout (lines_adjacency) in;
+layout (line_strip, max_vertices = 256) out;
+
+
+uniform int tessLv;
+vec4 vb[3][3];
+
+void deCasteljau(){
+    for(int i=0; i<tessLv+2; i++){
+        if(i >=0){
+            //extrapolation when i>=tessLv
+            for(int j=0; j<3; j++){
+                vec4 temp0 = gl_in[j].gl_Position;
+                vec4 temp1 = gl_in[j+1].gl_Position;
+                int ii = int(mod(i,3));
+                vb[ii][j] = temp0 * (1 - float(i)/float(tessLv)) + temp1 * float(i)/float(tessLv);
+            }
+        }
+        if(i >= 1){
+            for(int j=0; j<2; j++){
+                int ii = int(mod(i-1,3));
+                vec4 temp0 = vb[ii][j];
+                vec4 temp1 = vb[ii][j+1];
+                vb[ii][j] = temp0 * (1 - float(i)/float(tessLv)) + temp1 * float(i)/float(tessLv);
+            }
+        }
+        if(i >= 2){
+            for(int j=0; j<1; j++){
+                int ii = int(mod(i-2,3));
+                vec4 temp0 = vb[ii][j];
+                vec4 temp1 = vb[ii][j+1];
+                vb[ii][j] = temp0 * (1 - float(i)/float(tessLv)) + temp1 * float(i)/float(tessLv);
+                gl_Position = vb[ii][j];
+                EmitVertex();//final geometry vertex
+            }
+        }
+
+    }
+}
+
+void test(){
+    gl_Position = gl_in[1].gl_Position + vec4(0.1,0.1,0,0);
+    EmitVertex();
+}
+
+void main(){
+    gl_Position = gl_in[0].gl_Position;
+    EmitVertex();
+    deCasteljau();
+    gl_Position = gl_in[3].gl_Position;
+    EmitVertex();
+    EndPrimitive();
+}

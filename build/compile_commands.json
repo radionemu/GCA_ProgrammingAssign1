@@ -1,0 +1,14 @@
+[
+{
+  "directory": "C:/Users/s_radionemu/.vscode/projects/OpenGLA_LABS_Assign1/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/GLA.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\GLA.dir\\Sample_main.cpp.obj -c C:\\Users\\s_radionemu\\.vscode\\projects\\OpenGLA_LABS_Assign1\\Sample_main.cpp",
+  "file": "C:/Users/s_radionemu/.vscode/projects/OpenGLA_LABS_Assign1/Sample_main.cpp",
+  "output": "CMakeFiles/GLA.dir/Sample_main.cpp.obj"
+},
+{
+  "directory": "C:/Users/s_radionemu/.vscode/projects/OpenGLA_LABS_Assign1/build",
+  "command": "C:\\msys64\\mingw64\\bin\\g++.exe  @CMakeFiles/GLA.dir/includes_CXX.rsp -g -std=gnu++11 -o CMakeFiles\\GLA.dir\\general\\resolution.cpp.obj -c C:\\Users\\s_radionemu\\.vscode\\projects\\OpenGLA_LABS_Assign1\\general\\resolution.cpp",
+  "file": "C:/Users/s_radionemu/.vscode/projects/OpenGLA_LABS_Assign1/general/resolution.cpp",
+  "output": "CMakeFiles/GLA.dir/general/resolution.cpp.obj"
+}
+]
